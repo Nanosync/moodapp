@@ -15,4 +15,9 @@ install:
   - pnpm install
 script:
   - pnpm test
-  - sls deploy
+
+deploy:
+  provider: script
+  script: sls deploy
+  on:
+    branch: master

@@ -14,13 +14,13 @@ Ensure you have MongoDB installed locally. Then, clone the repository and execut
 
 Visit [http://localhost:4000](http://localhost:4000)
 
-The API is located at [/v1/moods]([http://localhost:4000/v1/moods)
+The API is located at [/v1/moods](http://localhost:4000/v1/moods)
 
 ### Accessing deployed API
 
 The backend is deployed on Heroku at [http://mood3219.herokuapp.com/](http://mood3219.herokuapp.com/)
 
-The API is located at [/v1/moods]([http://mood3219.herokuapp.com/v1/moods)
+The API is located at [/v1/moods](http://mood3219.herokuapp.com/v1/moods)
 
 ## Task B2
 
@@ -44,5 +44,5 @@ The build log on Travis may be viewed here:
 
 The endpoints are deployed on AWS Lambda via the Serverless framework at [https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/)
 
-The API is located at [/v1/moods]([https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/v1/moods)
+The API is located at [/v1/moods](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/v1/moods)
 
