@@ -16,6 +16,9 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  title() {
+    return 'Mood Tracker'
+  }
 }
 </script>
