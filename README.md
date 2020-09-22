@@ -6,7 +6,10 @@ Mood application using a simple JavaScript backend powered by ExpressJS.
 
 ### Running API locally
 
-Ensure you have MongoDB installed locally. Then, clone the repository and execute the following commands below:
+#### Prerequisites
+- Local instance of MongoDB
+
+Clone the repository and execute the following commands:
 
 `npm install`
 
@@ -26,7 +29,10 @@ The API is located at [/v1/moods](http://mood3219.herokuapp.com/v1/moods)
 
 ### Running tests locally
 
-You will need to install a local instance of MongoDB to ensure that the tests may run. Then, clone the repository and run the following commands:
+#### Prerequisites
+- Local instance of MongoDB
+
+Clone the repository and execute the following commands:
 
 `npm install`
 
