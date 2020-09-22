@@ -12,7 +12,7 @@ const Mood = require("../../models/mood");
 
 beforeAll(async () => {
     const url = `mongodb://127.0.0.1:27017/${databaseName}`;
-    await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 });
 
 describe('Mood', () => {
@@ -70,6 +70,13 @@ describe('Mood', () => {
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(data.feeling);
         expect(res.body.message).toBe(data.message);
+        expect(res.body.timestamp).toBe(data.timestamp);
+
+        let mood2 = await Mood.findOne({ _id: res.body._id });
+        expect(mood2).toBeTruthy();
+        expect(mood2.feeling).toBe(data.feeling);
+        expect(mood2.message).toBe(data.message);
+        expect(mood2.timestamp.toISOString()).toBe(data.timestamp);
         
         done();
     });
@@ -89,6 +96,11 @@ describe('Mood', () => {
         expect(res.statusCode).toEqual(200);
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(data.feeling);
+        expect(res.body.timestamp).toBeTruthy();
+
+        let mood2 = await Mood.findOne({ _id: res.body._id });
+        expect(mood2).toBeTruthy();
+        expect(mood2.feeling).toBe(data.feeling);
         
         done();
     });
@@ -105,6 +117,10 @@ describe('Mood', () => {
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(mood.feeling);
         expect(res.body.message).toBe(mood.message);
+        expect(res.body.timestamp).toBe(mood.timestamp.toISOString());
+
+        let mood2 = await Mood.findOne({ _id: res.body._id });
+        expect(mood2).toBeNull();
         
         done();
     });

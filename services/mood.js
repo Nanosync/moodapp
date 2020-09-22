@@ -47,12 +47,20 @@ const createMood = async function(moodDTO) {
 
 const updateMood = async function(moodDTO) {
     const { id, timestamp, feeling, message } = moodDTO;
+    
+    let params = {};
+    if (timestamp) {
+        params = { ...params, timestamp };
+    }
+    if (feeling) {
+        params = { ...params, feeling };
+    }
+    if (message) {
+        params = { ...params, message };
+    }
 
-    return Mood.findById(id)
+    return Mood.findOneAndUpdate({ _id: id }, params, { new: true })
         .then(mood => {
-            mood.timestamp = timestamp ? timestamp : mood.timestamp;
-            mood.feeling = feeling ? feeling : mood.feeling;
-            mood.message = message ? message : mood.message;    
             return mood;
         })
         .catch(err => {
