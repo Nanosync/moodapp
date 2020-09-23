@@ -1,6 +1,6 @@
 # CS3219 Mood App
 
-Mood application using a simple JavaScript backend powered by ExpressJS.
+Mood application using a simple JavaScript backend powered by ExpressJS and frontend SPA powered by Vue.
 
 ## Task B1
 
