@@ -52,3 +52,27 @@ The endpoints are deployed on AWS Lambda via the Serverless framework at [https:
 
 The API is located at [/v1/moods](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/v1/moods)
 
+## Task B4
+
+### Setting up the frontend
+
+The frontend SPA was built with Vue, and styling implemented using Bootstrap.
+
+#### Prerequisites
+- Local instance of MongoDB
+- pnpm package manager
+- Local API server from Task B1
+
+The project uses `pnpm` as the package manager. because it is much faster in managing dependencies. `npm` has not been tested, but it should work as well.
+
+Clone the repository, then execute the following commands:
+
+`npm install -g pnpm`
+
+`cd client`
+
+`pnpm install`
+
+`pnpm run serve`
+
+Visit [http://localhost:8080/](http://localhost:8080/)

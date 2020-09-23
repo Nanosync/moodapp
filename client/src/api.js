@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-  baseURL: 'http://localhost:4000/v1',
+  baseURL: process.env.API_URL || 'http://localhost:4000/v1',
   json: true
 })
 
