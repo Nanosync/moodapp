@@ -15,15 +15,15 @@ Clone the repository and execute the following commands:
 
 `npm start`
 
-Visit [http://localhost:4000](http://localhost:4000)
+Visit the API at [http://localhost:4000/api/v1/moods](http://localhost:4000/api/v1/moods)
 
-The API is located at [/v1/moods](http://localhost:4000/v1/moods)
+The base URL is [http://localhost:4000/api/v1](http://localhost:4000/api/v1)
 
 ### Accessing deployed API
 
-The backend is deployed on Heroku at [http://mood3219.herokuapp.com/](http://mood3219.herokuapp.com/)
+The API is deployed on Heroku at [https://mood3219.herokuapp.com/api/v1/moods](https://mood3219.herokuapp.com/api/v1/moods)
 
-The API is located at [/v1/moods](http://mood3219.herokuapp.com/v1/moods)
+The base URL is [https://mood3219.herokuapp.com/api/v1](https://mood3219.herokuapp.com/api/v1)
 
 ## Task B2
 
@@ -48,9 +48,9 @@ The build log on Travis may be viewed here:
 
 ### Accessing deployed API
 
-The endpoints are deployed on AWS Lambda via the Serverless framework at [https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/)
+The API is deployed on AWS Lambda via the Serverless framework at [https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/api/v1/moods](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/api/v1/moods)
 
-The API is located at [/v1/moods](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/v1/moods)
+The base URL is [https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/api/v1](https://vt2iojld9f.execute-api.ap-southeast-1.amazonaws.com/dev/api/v1)
 
 ## Task B4
 
@@ -71,3 +71,5 @@ Clone the repository, then execute the following commands:
 `npm run serve`
 
 Visit [http://localhost:8080/](http://localhost:8080/)
+
+You may also view a live deployment on Heroku at [https://mood3219.herokuapp.com](https://mood3219.herokuapp.com)
