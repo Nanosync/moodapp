@@ -2,6 +2,7 @@ const serverless = require('serverless-http');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const dev = app.get('env') !== 'production';
@@ -26,16 +27,30 @@ if (dev) {
     app.use(morgan('common'));
 }
 
-const routes = require("./routes/v1/routes");
-app.use('/v1', routes);
+app.use(express.static(path.join(__dirname, 'client/dist')));
 
-app.get('/', (req, res) => {
-    res.send("Hello world, from the server!");
+const routes = require("./routes/v1/routes");
+app.use('/api/v1', routes);
+
+if (!process.env.SERVE_FRONTEND) {
+    app.get('/', (req, res) => {
+        res.send("Hello world, from the server!");
+    });
+}
+
+app.get('*', (req, res) => {
+    if (process.env.SERVE_FRONTEND) {
+        res.sendFile(path.join(__dirname, 'client/dist/index.html'));
+    } else {
+        res.redirect('/');
+    }
 });
 
 // Error handler
 app.use((err, req, res, next) => {
-    console.error(err);
+    if (err) {
+        console.error(err);
+    }
     res.status(500).send('Internal Server Error');
 });
 

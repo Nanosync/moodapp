@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-  baseURL: process.env.API_URL || 'http://localhost:4000/v1',
+  baseURL: process.env.VUE_APP_API_URL,
   json: true
 })
 
