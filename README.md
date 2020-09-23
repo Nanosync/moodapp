@@ -60,19 +60,14 @@ The frontend SPA was built with Vue, and styling implemented using Bootstrap.
 
 #### Prerequisites
 - Local instance of MongoDB
-- pnpm package manager
 - Local API server from Task B1
-
-The project uses `pnpm` as the package manager. because it is much faster in managing dependencies. `npm` has not been tested, but it should work as well.
 
 Clone the repository, then execute the following commands:
 
-`npm install -g pnpm`
-
 `cd client`
 
-`pnpm install`
+`npm install`
 
-`pnpm run serve`
+`npm run serve`
 
 Visit [http://localhost:8080/](http://localhost:8080/)
