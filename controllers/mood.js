@@ -5,8 +5,6 @@ const { getMoods, createMood, getMood, updateMood, deleteMood } = require('../se
 exports.list = async function (req, res) {
     const { skip, limit } = req.query;
 
-    console.log(skip, limit);
-
     await getMoods(skip, limit)
         .then(mood => { res.json(mood); })
         .catch(err => {
