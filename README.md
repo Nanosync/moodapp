@@ -1,6 +1,6 @@
-# CS3219 Mood App
+# CS3219 Mood Tracker App
 
-Mood application using a simple JavaScript backend powered by ExpressJS and frontend SPA powered by Vue.
+Mood Tracker built using a simple JavaScript backend powered by ExpressJS and frontend SPA powered by Vue.
 
 ## Task B1
 
