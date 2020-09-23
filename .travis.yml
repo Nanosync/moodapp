@@ -9,6 +9,7 @@ install:
 script:
   - npm test
 deploy:
+  skip_cleanup: true
   provider: script
   script: sls deploy
   on:
