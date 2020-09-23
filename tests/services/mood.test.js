@@ -21,7 +21,7 @@ describe('Mood', () => {
             feeling: "Overjoyed",
             message: "Testing is fun"
         };
-        const res = await request.post('/v1/moods').send(data);
+        const res = await request.post('/api/v1/moods').send(data);
         
         expect(res.statusCode).toEqual(200);
         expect(res.body._id).toBeTruthy();
@@ -43,7 +43,7 @@ describe('Mood', () => {
             message: "help"
         });
 
-        const res = await request.get("/v1/moods/" + mood._id);
+        const res = await request.get("/api/v1/moods/" + mood._id);
         expect(res.statusCode).toEqual(200);
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(mood.feeling);
@@ -65,7 +65,7 @@ describe('Mood', () => {
             message: "delete me now"
         };
 
-        const res = await request.put("/v1/moods/" + mood._id).send(data);
+        const res = await request.put("/api/v1/moods/" + mood._id).send(data);
         expect(res.statusCode).toEqual(200);
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(data.feeling);
@@ -92,7 +92,7 @@ describe('Mood', () => {
             feeling: "happy"
         };
 
-        const res = await request.patch("/v1/moods/" + mood._id).send(data);
+        const res = await request.patch("/api/v1/moods/" + mood._id).send(data);
         expect(res.statusCode).toEqual(200);
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(data.feeling);
@@ -112,7 +112,7 @@ describe('Mood', () => {
             message: "help"
         });
 
-        const res = await request.delete("/v1/moods/" + mood._id);
+        const res = await request.delete("/api/v1/moods/" + mood._id);
         expect(res.statusCode).toEqual(200);
         expect(res.body._id).toBeTruthy();
         expect(res.body.feeling).toBe(mood.feeling);
