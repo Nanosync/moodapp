@@ -2,7 +2,8 @@
   <div class="container-fluid mt-4">
     <h1 class="h1">Mood Log</h1>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
-    <b-row>
+    <b-alert :show="loadingError" variant="danger">Loading from server failed</b-alert>
+    <b-row v-if="!loading && !loadingError">
       <b-col>
         <table class="table table-striped">
           <thead>
@@ -31,10 +32,10 @@
           <b-alert v-model="showError" variant="danger" dismissible>Feeling cannot be empty</b-alert>
           <form @submit.prevent="saveMood">
             <b-form-group label="Feeling">
-              <b-form-input type="text" v-model="model.feeling"></b-form-input>
+              <b-form-input type="text" v-model="model.feeling" placeholder="How are you feeling today?"></b-form-input>
             </b-form-group>
             <b-form-group label="Message">
-              <b-form-textarea rows="4" v-model="model.message"></b-form-textarea>
+              <b-form-textarea rows="4" v-model="model.message" placeholder="Describe the situation"></b-form-textarea>
             </b-form-group>
             <b-form-group label="Date">
               <b-form-input type="date" v-model="prettyDate"></b-form-input>
@@ -43,7 +44,8 @@
               <b-form-input type="time" v-model="prettyTime"></b-form-input>
             </b-form-group>
             <div>
-              <b-btn type="submit" variant="success">Save Mood</b-btn>
+              <b-btn type="submit" variant="success" class="mr-1">{{ this.model._id ? "Update" : "Create" }}</b-btn>
+              <b-btn type="submit" variant="secondary" class="mr-1" @click.prevent="onCancel" v-if="this.model._id">Cancel</b-btn>
             </div>
           </form>
         </b-card>
@@ -60,6 +62,7 @@ export default {
   data () {
     return {
       loading: false,
+      loadingError: false,
       moods: [],
       model: {},
       showError: false,
@@ -95,16 +98,23 @@ export default {
     }
   },
   methods: {
-    async refreshMoods () {
+    async refreshMoods() {
       this.loading = true
-      this.moods = await api.getMoods()
+      try {
+        this.moods = await api.getMoods()
+      } catch(e) {
+        this.loading = false
+        this.loadingError = true
+        return
+      }
       this.loading = false
+      this.loadingError = false
       this.showError = false
     },
-    async populateMoodToEdit (mood) {
+    async populateMoodToEdit(mood) {
       this.model = Object.assign({}, mood)
     },
-    async saveMood () {
+    async saveMood() {
       if (!this.model.feeling) {
         this.showError = true
         return
@@ -118,7 +128,7 @@ export default {
       this.model.timestamp = new Date(Date.now()).toISOString()
       await this.refreshMoods()
     },
-    async deleteMood (id) {
+    async deleteMood(id) {
       if (confirm('Are you sure you want to delete this mood?')) {
         if (this.model._id === id) {
           this.model = {}
@@ -126,6 +136,11 @@ export default {
         await api.deleteMood(id)
         await this.refreshMoods()
       }
+    },
+    async onCancel() {
+      this.model = {}
+      this.model.timestamp = new Date(Date.now()).toISOString()
+      await this.refreshMoods()
     }
   }
 }

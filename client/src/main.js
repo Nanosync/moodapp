@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 
 Vue.filter('formatDateTime', function(value) {
   if (value) {
-    return moment(String(value)).format('YYYY-MM-DD HH:mm')
+    return moment(String(value)).format('YYYY-MM-DD hh:mm A')
   }
 })
 
